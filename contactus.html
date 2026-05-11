@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>RedCarpet &mdash; Events and Exhibitions</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="keywords" content="html, css, javascript, jquery">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="css/vendor/icomoon/style.css">
+    <link rel="stylesheet" href="css/vendor/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/vendor/animate.min.css">
+    <link rel="stylesheet" href="css/vendor/aos.css">
+    <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/vendor/jquery.fancybox.min.css">
+    
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+
+.wizard-content-left {
+  background-blend-mode: darken;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+  padding: 30px;
+}
+.wizard-content-left h1 {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 600;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.form-wizard {
+  color: #888888;
+  padding: 30px;
+}
+.form-wizard .wizard-form-radio {
+  display: inline-block;
+  margin-left: 5px;
+  position: relative;
+}
+.form-wizard .wizard-form-radio input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  background-color: #dddddd;
+  height: 25px;
+  width: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:focus {
+  outline: 0;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked {
+  background-color: rgba(200,27,33,255);
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 1px;
+  right: 0;
+  margin: 0 auto;
+  top: 8px;
+}
+.form-wizard .wizard-form-radio input[type="radio"]:checked::after {
+  content: "";
+  display: inline-block;
+  webkit-animation: click-radio-wave 0.65s;
+  -moz-animation: click-radio-wave 0.65s;
+  animation: click-radio-wave 0.65s;
+  background: #000000;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+  border-radius: 50%;
+}
+.form-wizard .wizard-form-radio input[type="radio"] ~ label {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.form-wizard .form-wizard-header {
+  text-align: center;
+}
+.form-wizard .form-wizard-next-btn, .form-wizard .form-wizard-previous-btn, .form-wizard .form-wizard-submit {
+  background-color: rgba(200,27,33,255);
+  color: #ffffff;
+  display: inline-block;
+  min-width: 100px;
+  min-width: 120px;
+  padding: 10px;
+  text-align: center;
+}
+.form-wizard .form-wizard-next-btn:hover, .form-wizard .form-wizard-next-btn:focus, .form-wizard .form-wizard-previous-btn:hover, .form-wizard .form-wizard-previous-btn:focus, .form-wizard .form-wizard-submit:hover, .form-wizard .form-wizard-submit:focus {
+  color: #ffffff;
+  opacity: 0.6;
+  text-decoration: none;
+}
+.form-wizard .wizard-fieldset {
+  display: none;
+}
+.form-wizard .wizard-fieldset.show {
+  display: block;
+}
+.form-wizard .wizard-form-error {
+  display: none;
+  background-color: #d70b0b;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+.form-wizard .form-wizard-previous-btn {
+  background-color:rgba(200,27,33,255);
+}
+.form-wizard .form-control {
+  font-weight: 300;
+  height: auto !important;
+  padding: 15px;
+  color: #888888;
+  background-color: #00000000;
+  border: none;
+}
+.form-wizard .form-control:focus {
+  box-shadow: none;
+}
+.form-wizard .form-group {
+  position: relative;
+  margin: 25px 0;
+}
+.form-wizard .wizard-form-text-label {
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  transition: 0.2s linear all;
+}
+.form-wizard .focus-input .wizard-form-text-label {
+  color: #ffffff;
+  top: -18px;
+  transition: 0.2s linear all;
+  font-size: 12px;
+}
+.form-wizard .form-wizard-steps {
+  margin: 30px 0;
+}
+.form-wizard .form-wizard-steps li {
+  width: 30%;
+  float: left;
+  position: relative;
+}
+.form-wizard .form-wizard-steps li::after {
+  background-color: #111111;
+  content: "";
+  height: 5px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+.form-wizard .form-wizard-steps li span {
+  background-color: #1d1d1d;
+  border-radius: 50%;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  width: 40px;
+  z-index: 1;
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  width: 50%;
+}
+.form-wizard .form-wizard-steps li.active span, .form-wizard .form-wizard-steps li.activated span {
+  background-color: rgba(200,27,33,255);
+  color: #ffffff;
+}
+.form-wizard .form-wizard-steps li.active::after, .form-wizard .form-wizard-steps li.activated::after {
+  background-color: rgba(200,27,33,255);
+  left: 50%;
+  width: 50%;
+  border-color: rgba(200,27,33,255);
+}
+.form-wizard .form-wizard-steps li.activated::after {
+  width: 100%;
+  border-color: rgba(200,27,33,255);
+}
+.form-wizard .form-wizard-steps li:last-child::after {
+  left: 0;
+}
+.form-wizard .wizard-password-eye {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+@keyframes click-radio-wave {
+  0% {
+    width: 25px;
+    height: 25px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    margin-left: -15px;
+    margin-top: -15px;
+    opacity: 0.0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .wizard-content-left {
+    height: auto;
+  }
+}
+
+
+
+.form-wizard .wizard-form-radio input[type="text"] {
+  background: transparent;
+  border: none;
+}
+
+/*===== CONTACT ME =====*/
+
+.contact__content {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.contact__box {
+  background-color: #ffffff00;
+  border-radius: .5rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(49, 49, 49, 0.438);
+}
+
+.contact__icon, .contact__title {
+  color: var(--first-color);
+}
+
+.contact__icon {
+  font-size: 2rem;
+}
+
+.contact__title {
+  font-size: var(--h3-font-size);
+  margin: var(--mb-1) 0;
+}
+
+.contact__social {
+  color: var(--first-color-light);
+  font-size: 1.25rem;
+  margin: 0 var(--mb-1);
+}
+
+.contact__box:hover {
+  box-shadow: 0 6px 8px rgba(3, 3, 3, 0.4);
+}
+
+.contact__inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+}
+
+.contact__input, .contact__button {
+  outline: none;
+  font-size: var(--normal-font-size);
+}
+
+.contact__input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--first-color-light);
+  color: var(--first-color);
+  border-radius: .5rem;
+  margin-bottom: var(--mb-1);
+}
+
+.contact::placeholder {
+  color: var(--first-color-light);
+  font-weight: var(--font-semi-bold);
+}
+
+.contact__button {
+  cursor: pointer;
+  border: none;
+}
+
+
+
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".site-nav-target" data-offset="200" >
+
+    <nav class="unslate_co--site-mobile-menu">
+      <div class="close-wrap d-flex">
+        <a href="#" class="d-flex ml-auto js-menu-toggle">
+          <span class="close-label">Close</span>
+          <div class="close-times">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+          </div>
+        </a>
+      </div>
+      <div class="site-mobile-inner"></div>
+    </nav>
+
+
+    <div class="unslate_co--site-wrap" >
+
+      <div class="unslate_co--site-inner" >
+
+        <div class="lines-wrap" >
+          <div class="lines-inner">
+            <div class="lines"></div>
+          </div>
+        </div>
+        <!-- END lines -->
+      
+        
+        <nav class="unslate_co--site-nav site-nav-target" >
+
+          <div class="container">
+          
+            <div class="row align-items-center justify-content-between text-left">
+              <div class="col-md-5 text-right">
+                <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                  <li><a href="index.html" class="nav-link">Home</a></li>
+                  <li><a href="aboutus.html" class="nav-link">About Us</a></li>
+                  <li><a href="why us.html" class="nav-link">Why Us</a></li>
+                  
+                </ul>
+              </div>
+              <div class="site-logo pos-absolute">
+                <a href="index.html" class="unslate_co--site-logo"><img style="height: 100px; width: 100px;" src="img/logo.png" alt="Logo"></a>
+              </div>
+              <div class="col-md-5 text-right text-lg-left">
+                <ul class="site-nav-ul js-clone-nav text-left d-none d-lg-inline-block">
+                  <li class="has-children">
+                    <a href="services.html" class="nav-link">Services</a>
+                    <ul class="dropdown">
+                      <li>
+                        <a href="Event Management.html">Event Management</a>
+                      </li>
+                      <li>
+                        <a href="Exhibition Management.html">Exhibition Management</a>
+                      </li>
+                      <li>
+                        <a href="Design - Branding.html">Design - Branding</a>
+                      </li>
+                      <li>
+                        <a href="In-House Design and Production.html">Inhouse Services</a>
+                      </li>
+                      <li>
+                        <a href="MEP Works.html">MEP Works</a>
+                      </li>
+                      <li>
+                        <a href="Audio - Video Solutions.html">Audio - Video</a>
+                      </li>
+                      <li>
+                        <a href="Furniture Rental.html">Furniture Rental</a>
+                      </li>
+                      <li>
+                        <a href="Graphic Solutions.html">Graphic Solutions</a>
+                      </li>
+                      <li>
+                        <a href="Kiosk & Display Counters.html">Kiosk & Counters</a>
+                      </li>
+                      <li>
+                        <a href="Post-Production.html">Post-Production</a>
+                      </li>
+                      <li>
+                        <a href="Printing Services.html">Printing Services</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a href="projects.html" class="nav-link">Projects</a></li>
+                  <li><a href="contactus.html" class="nav-link">Contact Us</a></li>
+                </ul>
+  
+                <ul class="site-nav-ul-none-onepage text-right d-inline-block d-lg-none">
+                  <li><a href="#" class="js-menu-toggle">Menu</a></li>
+                </ul>
+  
+              </div>
+            </div>
+          </div>
+  
+        </nav>
+        <!-- END nav -->
+
+        <div class="cover-v1 jarallax " style="background-image: url('img/andrew-knechel-gG6yehL64fo-unsplash.jpg');" id="home-section">
+          <div class="container">
+            <div class="row align-items-center">
+                
+              <div class="col-md-7 mx-auto text-center">
+                <h1 class="heading gsap-reveal-hero">Contact Us</h1>
+              </div>
+  
+            </div>
+          </div>
+  
+  
+          <!-- dov -->
+          <a href="#blog-single-section" class="mouse-wrap smoothscroll">
+            <span class="mouse">
+              <span class="scroll"></span>
+            </span>
+            <span class="mouse-label">Scroll</span>
+          </a>
+  
+        </div>
+        <!-- END .cover-v1 -->
+        <section class="wizard-section">
+          <div class="row no-gutters">
+            <div class="col-lg-6 col-md-6">
+              <div class="wizard-content-left d-flex justify-content-center align-items-center">
+                
+                  <div class="contact__content bd-grid">
+                    <div class="contact__box">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                      </svg>
+                      <h3 class="contact__title"></h3>
+                      <span class="contact__description">info@redcarpetexhibitions.com</span>
+                    </div> <br><br>
+              
+                    <div class="contact__box">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
+                        <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                      </svg>
+                      <h3 class="contact__title"></h3>
+                      <span class="contact__description">+971 56 195 8501</span>
+                    </div> <br><br>
+              
+                    <div class="contact__box">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                      </svg>
+                      <h3 class="contact__title"></h3>
+                      <span class="contact__description">Building No:7283 - Shop No: 1, 
+                        Near Safari Mall
+                        Sharjah, UAE</span>
+                    </div>
+              
+                   
+                  </div>  
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="form-wizard">
+                <form action="" method="post" role="form">
+                  <div class="form-wizard-header">
+                    <p>Fill all form field to go next step</p>
+                    <ul class="list-unstyled form-wizard-steps clearfix">
+                      <li class="active"><span>1</span></li>
+                      <li><span>2</span></li>
+                      <li><span>3</span></li>
+                    </ul>
+                  </div>
+                  <fieldset class="wizard-fieldset show">
+                    <h5>Personal Information</h5>
+                    <div class="form-group">
+                      <input type="text" class="form-control wizard-required" id="fname">
+                      <label for="fname" class="wizard-form-text-label">Name*</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    <div class="form-group" >
+                      <div style="color: white;">You Are* <br></div>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="Agency" type="radio">
+                        <label for="radio1">Agency</label>
+                      </div>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="Exhibitor " type="radio">
+                        <label for="radio2">Exhibitor </label>
+                      </div><br>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="Event organiser" type="radio">
+                        <label for="radio3">Event organiser</label>
+                      </div>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="radio4" type="radio">
+                        <label for="radio4">Other</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control wizard-required" id="email">
+                      <label for="email" class="wizard-form-text-label">Email*</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    <div class="form-group">
+                      <input type="tel" class="form-control wizard-required" id="phone">
+                      <label for="phone" class="wizard-form-text-label">Phone Number*</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    <div class="form-group clearfix">
+                      <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+                    </div>
+                  </fieldset>	
+                  <fieldset class="wizard-fieldset">
+                    <h5>Event Information</h5>
+                    <div class="form-group">
+                      <input type="text" class="form-control wizard-required" id="event">
+                      <label for="event" class="wizard-form-text-label">Event Name*</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control wizard-required" placeholder="f.e. 2000 to 5000 (€/s)" id="budget">
+                      <label for="budget" class="wizard-form-text-label">Budget*</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">Event
+                         Date</div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <select class="form-control">
+                            <option value="">Date</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                            <option value="">6</option>
+                            <option value="">7</option>
+                            <option value="">8</option>
+                            <option value="">9</option>
+                            <option value="">10</option>
+                            <option value="">11</option>
+                            <option value="">12</option>
+                            <option value="">13</option>
+                            <option value="">14</option>
+                            <option value="">15</option>
+                            <option value="">16</option>
+                            <option value="">17</option>
+                            <option value="">18</option>
+                            <option value="">19</option>
+                            <option value="">20</option>
+                            <option value="">21</option>
+                            <option value="">22</option>
+                            <option value="">23</option>
+                            <option value="">24</option>
+                            <option value="">25</option>
+                            <option value="">26</option>
+                            <option value="">27</option>
+                            <option value="">28</option>
+                            <option value="">29</option>
+                            <option value="">30</option>
+                            <option value="">31</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <select class="form-control">
+                            <option value="">Month</option>
+                            <option value="">jan</option>
+                            <option value="">Feb</option>
+                            <option value="">March</option>
+                            <option value="">April</option>
+                            <option value="">May</option>
+                            <option value="">June</option>
+                            <option value="">Jully</option>
+                            <option value="">August</option>
+                            <option value="">Sept</option>
+                            <option value="">Oct</option>
+                            <option value="">Nov</option>
+                            <option value="">Dec</option>	
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <select class="form-control">
+                            <option value="">Years</option>
+                            <option value="">2019</option>
+                            <option value="">2020</option>
+                            <option value="">2021</option>
+                            <option value="">2022</option>
+                            <option value="">2023</option>
+                            <option value="">2024</option>
+                            <option value="">2025</option>
+                            <option value="">2026</option>
+                            <option value="">2027</option>
+                            <option value="">2028</option>
+                            <option value="">2029</option>
+                            <option value="">2030</option>
+                            <option value="">2031</option>
+                            <option value="">2032</option>
+                            <option value="">2033</option>
+                            <option value="">2034</option>
+                            <option value="">2035</option>
+                            <option value="">2036</option>
+                            <option value="">2037</option>
+                            <option value="">2038</option>
+                            <option value="">2039</option>
+                            <option value="">2040</option>	
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control wizard-required" placeholder="" id="meter">
+                      <label for="meter" class="wizard-form-text-label">Square metres*</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    <div class="form-group clearfix">
+                      <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+                      <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+                    </div>
+                  </fieldset>	
+                  <fieldset class="wizard-fieldset">
+                    <h5>Final Touch!</h5>
+                    <div class="form-group">
+                      <div style="color: white;">How did you find RedCarpet*</div><br>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="Recommendation" type="radio">
+                        <label for="Recommendation">Recommendation</label>
+                      </div>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="Internet" type="radio">
+                        <label for="Internet">Internet</label>
+                      </div>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id=" Tradeshow" type="radio">
+                        <label for=" Tradeshow"> Tradeshow</label>
+                      </div>
+                      <div class="wizard-form-radio">
+                        <input name="radio-name" id="Other" type="radio">
+                        <label for="Other">Other</label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <textarea  class="form-control wizard-required" id="honame"></textarea>
+                      <label for="honame" class="wizard-form-text-label">Your message *</label>
+                      <div class="wizard-form-error"></div>
+                    </div>
+                    
+                    <div class="form-group clearfix">
+                      <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+                      <a href="javascript:;" class="form-wizard-submit float-right">Submit</a>
+                    </div>
+                  </fieldset>	
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div> <!-- END .unslate_co-site-inner -->
+
+      <footer class="unslate_co--footer unslate_co--section">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-7">
+              
+              <div class="footer-site-logo"><a href="#">RedCarpet<span>.</span></a></div>
+
+              <ul class="footer-site-social">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="https://www.linkedin.com/company/redcarpetexhibitions/about/?viewAsMember=true">Linkedin</a></li>
+                <li><a href="#">Instagram</a></li>
+              </ul>
+
+              <p class="site-copyright">
+                
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>
+                  document.write(new Date().getFullYear());
+                </script> All rights reserved by <a href="https://redcarpetexhibitions.com" target="_blank">Redcarpet</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      
+    </div>
+
+    
+    <!-- Loader -->
+    <div id="unslate_co--overlayer"></div>
+    <div class="site-loader-wrap">
+      <div class="site-loader"></div>
+    </div>
+
+    <script src="js/scripts-dist.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      jQuery(document).ready(function() {
+	// click on next button
+	jQuery('.form-wizard-next-btn').click(function() {
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		var next = jQuery(this);
+		var nextWizardStep = true;
+		parentFieldset.find('.wizard-required').each(function(){
+			var thisValue = jQuery(this).val();
+
+			if( thisValue == "") {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+				nextWizardStep = false;
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+		if( nextWizardStep) {
+			next.parents('.wizard-fieldset').removeClass("show","400");
+			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
+			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
+			jQuery(document).find('.wizard-fieldset').each(function(){
+				if(jQuery(this).hasClass('show')){
+					var formAtrr = jQuery(this).attr('data-tab-content');
+					jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+						if(jQuery(this).attr('data-attr') == formAtrr){
+							jQuery(this).addClass('active');
+							var innerWidth = jQuery(this).innerWidth();
+							var position = jQuery(this).position();
+							jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+						}else{
+							jQuery(this).removeClass('active');
+						}
+					});
+				}
+			});
+		}
+	});
+	//click on previous button
+	jQuery('.form-wizard-previous-btn').click(function() {
+		var counter = parseInt(jQuery(".wizard-counter").text());;
+		var prev =jQuery(this);
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		prev.parents('.wizard-fieldset').removeClass("show","400");
+		prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
+		currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
+		jQuery(document).find('.wizard-fieldset').each(function(){
+			if(jQuery(this).hasClass('show')){
+				var formAtrr = jQuery(this).attr('data-tab-content');
+				jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+					if(jQuery(this).attr('data-attr') == formAtrr){
+						jQuery(this).addClass('active');
+						var innerWidth = jQuery(this).innerWidth();
+						var position = jQuery(this).position();
+						jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+					}else{
+						jQuery(this).removeClass('active');
+					}
+				});
+			}
+		});
+	});
+	//click on form submit button
+	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			if( thisValue == "" ) {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+	});
+	// focus on input field check empty or not
+	jQuery(".form-control").on('focus', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().addClass("focus-input");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+		}
+	}).on('blur', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().removeClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideDown("3000");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideUp("3000");
+		}
+	});
+});
+
+    </script>
+  </body>
+</html>
